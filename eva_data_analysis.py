@@ -11,22 +11,28 @@ def read_json_to_dataframe(input_file):
     eva_df.sort_values('date', inplace=True)
     return eva_df
 
+
 def write_dataframe_to_csv(df, output_file):
     print(f'Saving to CSV file {output_file}')
     # Save dataframe to CSV file for later analysis
     df.to_csv(output_file, index=False)
 
 
-# Data source: https://data.nasa.gov/resource/eva.json (with modifications)
+# Main code
+
+print("--START--")
+
 input_file = open('./eva-data.json', 'r', encoding='ascii')
 output_file = open('./eva-data.csv', 'w', encoding='utf-8')
 graph_file = './cumulative_eva_graph.png'
 
+# Read the data from JSON file
 eva_data = read_json_to_dataframe(input_file)
+
+# Convert and export data to CSV file
 write_dataframe_to_csv(eva_data, output_file)
 
-
-
+print(f'Plotting cumulative spacewalk duration and saving to {graph_file}')
 # Plot cumulative time spent in space over years
 eva_data['duration_hours'] = eva_data['duration'].str.split(":").apply(lambda x: int(x[0]) + int(x[1])/60)
 eva_data['cumulative_time'] = eva_data['duration_hours'].cumsum()
@@ -36,3 +42,5 @@ plt.ylabel('Total time spent in space to date (hours)')
 plt.tight_layout()
 plt.savefig(graph_file)
 plt.show()
+
+print("--END--")
