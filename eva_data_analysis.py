@@ -19,9 +19,7 @@ for i in range(374):
 #data.pop(0)
 ## Comment out this bit if you don't want the spreadsheet
 
-
 w=csv.writer(data_t)
-
 
 time = []
 date =[]
@@ -53,7 +51,6 @@ for i in time:
     t.append(t[-1]+i)
 
 date,time = zip(*sorted(zip(date, time)))
-
 
 plt.plot(date,t[1:], 'ko-')
 plt.xlabel('Year')
