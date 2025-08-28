@@ -6,5 +6,5 @@ def test_text_to_duration_float():
 def test_text_to_duration_integer():
     assert text_to_duration("10:00") == 10
 
-test_text_to_duration_float()
-test_text_to_duration_integer()
+# test_text_to_duration_float()
+# test_text_to_duration_integer()
