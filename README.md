@@ -6,3 +6,6 @@ Date: August 2025 (Four 1/2 day classes)
 
 Note that lesson is in the Carpentries incubator and may move elsewhere in the future.
 
+Note that a `results/` folder is necessary to run the code.
+
+
